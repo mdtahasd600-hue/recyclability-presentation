@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recyclability & Self-Regulation in Nature</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#07111f;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+#deck{width:100vw;height:100vh;position:relative}
+.slide{position:absolute;inset:0;padding:5vh 6vw 8vh;display:none;overflow:hidden;background:radial-gradient(circle at 75% 15%,#29445d 0,#0c1b2a 40%,#050b12 100%)}
+.slide.active{display:block;animation:zoomIn .75s ease both}
+.slide.fly{animation:flyIn .8s cubic-bezier(.2,.8,.2,1) both}
+.slide.zoom{animation:zoomIn .8s ease both}
+@keyframes zoomIn{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+@keyframes flyIn{from{opacity:0;transform:translateX(100vw) rotate(5deg)}to{opacity:1;transform:translateX(0) rotate(0)}}
+h1{font-size:clamp(38px,6vw,84px);margin:.15em 0 .25em;letter-spacing:-2px}
+h2{font-size:clamp(30px,4vw,55px);margin:.15em 0 .55em;color:#b9f6ca}
+h3{font-size:28px;margin:.2em 0}
+p,li{font-size:clamp(17px,1.55vw,27px);line-height:1.45}
+ul{margin-top:.2em}.tag{display:inline-block;padding:9px 18px;border:1px solid #79e6a2;border-radius:30px;color:#b9f6ca;letter-spacing:2px;text-transform:uppercase;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;height:73%}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:24px;padding:25px;backdrop-filter:blur(8px);box-shadow:0 20px 50px #0005}
+.big{font-size:clamp(25px,2.5vw,42px);font-weight:bold;color:#d9ffe4}
+.accent{color:#8ff0ae}.gold{color:#ffd978}.cyan{color:#7cecff}
+.center{text-align:center}.muted{color:#b5c2ce}
+.footer{position:absolute;bottom:22px;left:6vw;right:6vw;display:flex;justify-content:space-between;color:#91a4b7;font-size:14px}
+.progress{position:absolute;top:0;left:0;height:5px;background:#9cf5b6;width:0;transition:width .4s}
+.orb{width:220px;height:220px;border-radius:50%;margin:auto;background:radial-gradient(circle at 35% 30%,#fff,#9ff4b8 12%,#1f9b66 42%,#082f25 70%,#020a0a);box-shadow:0 0 70px #59f3a077;animation:pulse 2.5s infinite}
+@keyframes pulse{50%{transform:scale(1.06);box-shadow:0 0 100px #59f3a099}}
+.cycle{height:330px;position:relative;display:flex;align-items:center;justify-content:center}
+.ring{width:300px;height:300px;border:7px dashed #86efac;border-radius:50%;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.node{position:absolute;background:#102b24;border:2px solid #8ff0ae;border-radius:18px;padding:12px 18px;font-weight:bold}
+.n1{top:0}.n2{right:0}.n3{bottom:0}.n4{left:0}
+.plane{position:absolute;font-size:55px;right:-100px;top:18%;animation:plane 2.4s ease-in-out forwards}
+@keyframes plane{0%{right:-100px;transform:rotate(-5deg)}100%{right:110%;transform:rotate(-5deg)}}
+.leaf{font-size:70px;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-18px) rotate(6deg)}}
+.teddy{font-size:150px;display:inline-block;animation:teddy 1.8s ease-in-out infinite}
+@keyframes teddy{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-10px)}}
+.curtain{position:fixed;z-index:99;inset:0;pointer-events:none;display:flex}
+.curtain div{width:50%;height:100%;background:repeating-linear-gradient(90deg,#5a0015 0,#76001e 9%,#42000e 18%);box-shadow:inset -20px 0 40px #0008}
+.curtain .left{animation:openL 2.1s 1s cubic-bezier(.6,0,.2,1) forwards}
+.curtain .right{animation:openR 2.1s 1s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes openL{to{transform:translateX(-102%)}}@keyframes openR{to{transform:translateX(102%)}}
+#controls{position:fixed;z-index:20;bottom:15px;right:20px;display:flex;gap:8px}
+button{background:#122536;color:#fff;border:1px solid #628098;border-radius:12px;padding:9px 13px;cursor:pointer}
+button:hover{background:#1d3a50}
+#hint{position:fixed;z-index:20;top:14px;right:20px;color:#9fb0bd;font-size:12px}
+.quote{font-size:clamp(24px,3vw,44px);line-height:1.25;border-left:5px solid #8ff0ae;padding-left:25px}
+</style>
+</head>
+<body>
+<div class="curtain"><div class="left"></div><div class="right"></div></div>
+<div id="deck">
+
+<section class="slide active center" data-speaker="Member 1">
+<div class="tag">Universal Human Values • Class Presentation</div>
+<h1>RECYCLABILITY<br><span class="accent">& SELF-REGULATION</span><br>IN NATURE</h1>
+<p class="muted">“Nature does not waste — it transforms, balances and renews.”</p>
+<div class="orb"></div>
+<p><b>5 Members • 15 Minutes • Understanding Harmony in Nature</b></p>
+</section>
+
+<section class="slide" data-speaker="Member 1">
+<div class="plane">✈️</div>
+<div class="tag">Member 1 • Opening</div><h2>1. What Is Nature’s Harmony?</h2>
+<div class="grid"><div class="card"><ul>
+<li>Nature is a connected system in which different orders exist together.</li>
+<li>The material, plant, animal and human orders depend on one another.</li>
+<li>Nature shows repeated cycles instead of one-way consumption.</li>
+<li>Resources are continuously transformed and reused in different forms.</li>
+<li>These cycles help maintain continuity and balance on Earth.</li>
+<li>UHV calls this cyclic character <b>recyclability</b> in nature.</li>
+<li>Along with it, nature also demonstrates <b>self-regulation</b>.</li>
+</ul></div><div class="card center"><div class="leaf">🌿</div><div class="big">Interconnectedness → Cycles → Balance → Continuity</div></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 1">
+<div class="tag">Concept 1</div><h2>2. Recyclability: Nature’s Circular System</h2>
+<div class="grid"><div class="cycle"><div class="ring"></div><div class="node n1">USE</div><div class="node n2">TRANSFORM</div><div class="node n3">RETURN</div><div class="node n4">REUSE</div></div>
+<div class="card"><ul>
+<li>Recyclability means materials participate in recurring natural cycles.</li>
+<li>What appears to be “waste” in one process can become a resource for another.</li>
+<li>Water moves through evaporation, condensation and precipitation.</li>
+<li>Carbon moves among atmosphere, organisms, soil and other reservoirs.</li>
+<li>Nutrients can return to soil through decomposition.</li>
+<li>These processes support continuity rather than permanent accumulation.</li>
+<li>Thus, nature works largely through circulation and transformation.</li>
+</ul></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 2">
+<div class="tag">Member 2 • Water Cycle</div><h2>3. Water Cycle: A Simple Example of Recyclability</h2>
+<div class="grid"><div class="card"><ul>
+<li>Solar energy causes water to evaporate from oceans, lakes and other surfaces.</li>
+<li>Water vapour rises and cools, leading to condensation.</li>
+<li>Clouds form and water returns through precipitation such as rain or snow.</li>
+<li>Water then flows through rivers, soil and groundwater systems.</li>
+<li>Plants also return water to the atmosphere through transpiration.</li>
+<li>The same water therefore participates in many stages again and again.</li>
+<li>This illustrates how a natural cycle can maintain continuity of a resource.</li>
+</ul></div><div class="card center"><div style="font-size:90px">☀️</div><div class="big">Evaporation ↑<br>☁️ Condensation<br>↓ Rain<br>🌊 Collection</div></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 2">
+<div class="tag">Member 2 • Nutrient Cycles</div><h2>4. Carbon, Oxygen & Nitrogen: Nature Reuses</h2>
+<div class="grid"><div class="card"><ul>
+<li>Plants absorb carbon dioxide during photosynthesis and release oxygen.</li>
+<li>Animals and humans use oxygen during respiration and return carbon dioxide.</li>
+<li>Decomposition returns nutrients and carbon-containing materials to ecosystems.</li>
+<li>Nitrogen is converted into usable forms through biological and soil processes.</li>
+<li>Plants take nutrients from soil and animals obtain them through food.</li>
+<li>When organisms die, decomposers help return matter to the environment.</li>
+<li>These cycles connect organisms with air, water and soil.</li>
+</ul></div><div class="card center"><div class="big">🌱 → 🐄 → 🦠 → 🌱</div><p>Production → Consumption → Decomposition → Renewal</p></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 3">
+<div class="tag">Member 3 • Self-Regulation</div><h2>5. What Is Self-Regulation?</h2>
+<div class="grid"><div class="card center"><div style="font-size:100px">⚖️</div><div class="big">Balance without a central controller</div></div><div class="card"><ul>
+<li>Self-regulation means natural systems maintain appropriate relationships within themselves.</li>
+<li>It does not mean nature never changes or never faces disturbance.</li>
+<li>Instead, many interactions tend to maintain continuity and workable balance.</li>
+<li>Population, food availability and environmental conditions influence one another.</li>
+<li>In a forest, plants, animals, soil, water and climate are interconnected.</li>
+<li>Food chains and competition can prevent unlimited growth of a single population.</li>
+<li>Thus, nature shows an organised order without one human manager controlling it.</li>
+</ul></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 3">
+<div class="tag">Member 3 • Forest Example</div><h2>6. Self-Regulation in a Forest Ecosystem</h2>
+<div class="grid"><div class="card"><ul>
+<li>Plants depend on sunlight, water, minerals, soil and suitable conditions.</li>
+<li>Herbivores depend on plants, while predators depend on other animals.</li>
+<li>Decomposers break down dead matter and return nutrients to the soil.</li>
+<li>Predation and competition influence population sizes.</li>
+<li>Availability of food and habitat affects reproduction and survival.</li>
+<li>No single species can grow without limits in a finite ecosystem.</li>
+<li>The network of relationships contributes to the continuity of the forest.</li>
+</ul></div><div class="card center"><div style="font-size:100px">🌳</div><div class="big">Plants ↔ Herbivores ↔ Predators ↔ Decomposers</div></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 4">
+<div class="tag">Member 4 • Interconnection</div><h2>7. Recyclability + Self-Regulation = Harmony</h2>
+<div class="grid"><div class="card center"><div class="big">♻️ RECYCLABILITY</div><p>Materials circulate and return to useful forms.</p><div class="big">＋</div><div class="big">⚖️ SELF-REGULATION</div><p>Relationships maintain continuity and balance.</p></div><div class="card"><ul>
+<li>Recyclability supplies the recurring movement of matter through nature.</li>
+<li>Self-regulation helps keep interactions within sustainable conditions.</li>
+<li>Both together show why natural systems can continue over long periods.</li>
+<li>Water and nutrient cycles connect the material and living orders.</li>
+<li>Food webs connect plants, animals and decomposers.</li>
+<li>Human beings are also dependent on these same systems.</li>
+<li>Understanding this harmony can guide more responsible human activity.</li>
+</ul></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 4">
+<div class="tag">Member 4 • Four Orders in UHV</div><h2>8. Four Orders: Mutual Fulfilment</h2>
+<div class="grid"><div class="card"><ul>
+<li><b>Material Order:</b> soil, water, air, minerals and physical resources.</li>
+<li><b>Plant/Bio Order:</b> trees, crops, grass and other plants.</li>
+<li><b>Animal Order:</b> animals, birds, insects and other organisms.</li>
+<li><b>Human Order:</b> human beings with body and the capacity for understanding.</li>
+<li>Material conditions support plant and animal life.</li>
+<li>Plants provide food, oxygen and habitats, while animals contribute to ecological processes.</li>
+<li>UHV emphasises understanding these relationships as mutual fulfilment.</li>
+</ul></div><div class="card center"><div style="font-size:58px">🪨 ↔ 🌱 ↔ 🐾 ↔ 🧑</div><p class="big">Interdependence</p><p>One order supports and is affected by the others.</p></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 5">
+<div class="tag">Member 5 • Human Responsibility</div><h2>9. What Happens When We Break the Cycles?</h2>
+<div class="grid"><div class="card"><ul>
+<li>Human activities can extract resources faster than natural systems can replenish them.</li>
+<li>Persistent waste can accumulate when it does not readily re-enter natural cycles.</li>
+<li>Pollution can disturb air, water, soil and living organisms.</li>
+<li>Deforestation can remove habitats and interrupt ecological relationships.</li>
+<li>Overuse of resources can reduce the resilience of ecosystems.</li>
+<li>The issue is not that nature has lost all self-regulation, but that human actions can strongly disturb natural processes.</li>
+<li>Therefore, responsible production and consumption become important.</li>
+</ul></div><div class="card center"><div style="font-size:95px">🏭 → 🗑️ → 🌍</div><div class="big">Linear use creates pressure.<br>Circular thinking reduces it.</div></div></div>
+</section>
+
+<section class="slide" data-speaker="Member 5">
+<div class="tag">Member 5 • Practical Application</div><h2>10. What Can We Learn From Nature?</h2>
+<div class="grid"><div class="card center"><div class="big">♻️ Reduce → Reuse → Repair → Recycle</div><p>Design products for longer life and recovery of materials.</p><div class="big">🌱 Protect natural cycles</div><p>Save water, soil, biodiversity and habitats.</p></div><div class="card"><ul>
+<li>Design production systems that minimise waste and recover useful materials.</li>
+<li>Prefer durable, repairable and reusable products where practical.</li>
+<li>Separate waste so recyclable and organic materials can be processed appropriately.</li>
+<li>Use resources efficiently rather than treating them as unlimited.</li>
+<li>Protect forests, wetlands and other ecosystems that perform natural cycles.</li>
+<li>Think of humans as participants in nature, not separate from it.</li>
+<li>Human values can support choices that aim at mutual fulfilment.</li>
+</ul></div></div>
+</section>
+
+<section class="slide" data-speaker="All Members">
+<div class="tag">The 15-Minute Takeaway</div><h2>11. In One Picture</h2>
+<div class="center" style="margin-top:5vh"><div class="big" style="font-size:clamp(28px,4vw,58px)">NATURE'S MODEL</div>
+<p class="quote">“Nothing exists in isolation. Matter circulates, relationships interact, and continuity emerges from the harmony of the whole.”</p>
+<div style="font-size:70px">💧 ↻ 🌱 ↻ 🐾 ↻ 🦠 ↻ 🌍</div>
+<p>Recyclability keeps materials moving • Self-regulation supports balance • Human understanding enables responsible participation</p></div>
+</section>
+
+<section class="slide center" data-speaker="All Members">
+<div class="tag">Finale</div>
+<h1>THANK YOU! 🌍</h1>
+<div class="teddy">🧸</div>
+<h2 class="gold">“Nature has a cycle. Let our actions become part of the solution.”</h2>
+<p class="big">Questions?</p>
+<p class="muted">Presented by: Member 1 • Member 2 • Member 3 • Member 4 • Member 5</p>
+</section>
+
+</div>
+<div class="progress" id="progress"></div>
+<div id="hint">← → / Space • F = fullscreen • A = autoplay</div>
+<div id="controls"><button onclick="prev()">◀</button><button onclick="next()">▶</button><button onclick="toggleAuto()">AUTO</button><button onclick="document.documentElement.requestFullscreen()">FULL</button></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')]; let i=0,auto=null;
+function show(n,dir=1){i=(n+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('active',k===i));let s=slides[i];s.classList.remove('fly','zoom');void s.offsetWidth;s.classList.add(dir>0?'fly':'zoom');document.getElementById('progress').style.width=((i+1)/slides.length*100)+'%';}
+function next(){show(i+1,1)} function prev(){show(i-1,-1)}
+function toggleAuto(){if(auto){clearInterval(auto);auto=null}else{auto=setInterval(next,12000)}}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev();if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen();if(e.key.toLowerCase()==='a')toggleAuto()});
+show(0);
+</script>
+</body></html>
